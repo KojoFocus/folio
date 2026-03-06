@@ -2,59 +2,27 @@
 
 import { useState } from "react";
 import { signIn } from "next-auth/react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
-import { cn } from "@/lib/utils";
-
-type Mode = "signin" | "signup";
 
 export default function LoginPage() {
-  const router       = useRouter();
   const searchParams = useSearchParams();
   const callbackUrl  = searchParams.get("callbackUrl") ?? "/dashboard";
   const urlError     = searchParams.get("error");
 
-  const [mode, setMode]         = useState<Mode>("signin");
-  const [email, setEmail]       = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading]   = useState<"google" | "email" | null>(null);
-  const [error, setError]       = useState(urlError ? friendlyError(urlError) : "");
+  const [loading, setLoading] = useState(false);
+  const [error, setError]     = useState(urlError ? friendlyError(urlError) : "");
 
-  // ── Google OAuth ────────────────────────────────────────────────────────────
   async function handleGoogle() {
     setError("");
-    setLoading("google");
+    setLoading(true);
     try {
       await signIn("google", { callbackUrl });
-      // signIn redirects on success — loading will persist until redirect
     } catch {
       setError("Google sign-in failed. Please try again.");
-      setLoading(null);
+      setLoading(false);
     }
-  }
-
-  // ── Email / password ────────────────────────────────────────────────────────
-  async function handleEmail(e: React.FormEvent) {
-    e.preventDefault();
-    if (!email || !password) return;
-
-    setError("");
-    setLoading("email");
-
-    const result = await signIn("credentials", {
-      email,
-      password,
-      redirect: false,
-    });
-
-    if (result?.error) {
-      setError("Invalid email or password.");
-      setLoading(null);
-      return;
-    }
-
-    router.push(callbackUrl);
   }
 
   return (
@@ -68,9 +36,7 @@ export default function LoginPage() {
         {/* Logo */}
         <div className="text-center space-y-1">
           <p className="font-serif text-2xl font-semibold text-field-100">Folio</p>
-          <p className="text-sm text-field-500">
-            {mode === "signin" ? "Sign in to your account" : "Create your account"}
-          </p>
+          <p className="text-sm text-field-500">Sign in to your account</p>
         </div>
 
         {/* Error banner */}
@@ -83,86 +49,15 @@ export default function LoginPage() {
         {/* Google button */}
         <button
           onClick={handleGoogle}
-          disabled={!!loading}
+          disabled={loading}
           className="flex w-full items-center justify-center gap-3 rounded-lg border border-field-700 bg-field-900 px-4 py-3 text-sm font-medium text-field-200 transition-colors hover:border-field-600 hover:bg-field-800 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {loading === "google" ? (
-            <Loader2 className="h-4 w-4 animate-spin" />
-          ) : (
-            <GoogleIcon />
-          )}
+          {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <GoogleIcon />}
           Continue with Google
         </button>
 
-        {/* Divider */}
-        <div className="flex items-center gap-3">
-          <div className="h-px flex-1 bg-field-800" />
-          <span className="text-xs text-field-600">or</span>
-          <div className="h-px flex-1 bg-field-800" />
-        </div>
-
-        {/* Email form */}
-        <form onSubmit={handleEmail} className="space-y-3">
-          <div className="space-y-1.5">
-            <label htmlFor="email" className="block text-xs text-field-500">Email</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              autoComplete="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@example.com"
-              className={cn(
-                "w-full rounded-lg border border-field-700 bg-field-900 px-3 py-2.5 text-sm text-field-200",
-                "placeholder:text-field-600 focus:outline-none focus:border-field-500 transition-colors"
-              )}
-            />
-          </div>
-
-          <div className="space-y-1.5">
-            <label htmlFor="password" className="block text-xs text-field-500">Password</label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              required
-              autoComplete={mode === "signin" ? "current-password" : "new-password"}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
-              className={cn(
-                "w-full rounded-lg border border-field-700 bg-field-900 px-3 py-2.5 text-sm text-field-200",
-                "placeholder:text-field-600 focus:outline-none focus:border-field-500 transition-colors"
-              )}
-            />
-          </div>
-
-          <button
-            type="submit"
-            disabled={!!loading}
-            className="flex w-full items-center justify-center gap-2 rounded-lg bg-sage-400 py-3 text-sm font-medium text-field-950 transition-colors hover:bg-sage-300 disabled:opacity-50 disabled:cursor-not-allowed mt-1"
-          >
-            {loading === "email" ? (
-              <Loader2 className="h-4 w-4 animate-spin" />
-            ) : mode === "signin" ? (
-              "Sign in"
-            ) : (
-              "Create account"
-            )}
-          </button>
-        </form>
-
-        {/* Toggle signin / signup */}
-        <p className="text-center text-sm text-field-600">
-          {mode === "signin" ? "Don't have an account?" : "Already have an account?"}{" "}
-          <button
-            onClick={() => { setMode(mode === "signin" ? "signup" : "signin"); setError(""); }}
-            className="text-field-400 hover:text-field-200 transition-colors"
-          >
-            {mode === "signin" ? "Sign up" : "Sign in"}
-          </button>
+        <p className="text-center text-xs text-field-600">
+          By continuing you agree to our terms of service.
         </p>
       </motion.div>
     </div>
