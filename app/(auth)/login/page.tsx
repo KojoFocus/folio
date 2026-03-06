@@ -104,8 +104,10 @@ export default function LoginPage() {
         {/* Email form */}
         <form onSubmit={handleEmail} className="space-y-3">
           <div className="space-y-1.5">
-            <label className="block text-xs text-field-500">Email</label>
+            <label htmlFor="email" className="block text-xs text-field-500">Email</label>
             <input
+              id="email"
+              name="email"
               type="email"
               required
               autoComplete="email"
@@ -120,8 +122,10 @@ export default function LoginPage() {
           </div>
 
           <div className="space-y-1.5">
-            <label className="block text-xs text-field-500">Password</label>
+            <label htmlFor="password" className="block text-xs text-field-500">Password</label>
             <input
+              id="password"
+              name="password"
               type="password"
               required
               autoComplete={mode === "signin" ? "current-password" : "new-password"}
