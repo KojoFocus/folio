@@ -60,7 +60,7 @@ function addChartToSlide(
   const baseOpts: pptxgen.IChartOpts = {
     x: pos.x, y: pos.y, w: pos.w, h: pos.h,
     chartColors:         [...T.chartColors],
-    plotAreaBkgndColor:  T.chartBg,
+    plotArea:            { fill: { color: T.chartBg } },
     catAxisLabelColor:   T.body,
     catAxisLabelFontSize: 10,
     catAxisLineShow:     false,
