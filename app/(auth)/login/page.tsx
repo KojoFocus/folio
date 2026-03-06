@@ -82,8 +82,6 @@ function friendlyError(code: string): string {
     case "OAuthSignin":
     case "OAuthCallback":
       return "Google sign-in failed. Please try again.";
-    case "CredentialsSignin":
-      return "Invalid email or password.";
     default:
       return "Something went wrong. Please try again.";
   }
