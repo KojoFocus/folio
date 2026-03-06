@@ -3,8 +3,6 @@ import type Stripe from "stripe";
 import { stripe, PRICE_TO_PLAN } from "@/lib/stripe";
 import type { Plan } from "@/lib/claude";
 
-// Required so Next.js doesn't parse the body — Stripe needs the raw bytes for signature verification.
-export const config = { api: { bodyParser: false } };
 
 export async function POST(req: NextRequest) {
   const sig     = req.headers.get("stripe-signature");
