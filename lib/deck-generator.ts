@@ -67,7 +67,7 @@ function addChartToSlide(
     valAxisLabelColor:   T.body,
     valAxisLabelFontSize: 10,
     valAxisLineShow:     false,
-    valGridLine:         { color: T.chartGrid, pt: 0.5, style: "solid" },
+    valGridLine:         { color: T.chartGrid, style: "solid" },
     showLegend:          chart.series.length > 1,
     legendFontColor:     T.body,
     legendFontSize:      10,
