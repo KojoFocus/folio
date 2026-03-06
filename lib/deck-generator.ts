@@ -57,7 +57,9 @@ function addChartToSlide(
     values: sr.values,
   }));
 
-  const baseOpts: pptxgen.IChartOpts = {
+  // Cast to any to avoid PptxGenJS type-def churn across versions
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const baseOpts: any = {
     x: pos.x, y: pos.y, w: pos.w, h: pos.h,
     chartColors:         [...T.chartColors],
     plotArea:            { fill: { color: T.chartBg } },
@@ -69,7 +71,7 @@ function addChartToSlide(
     valAxisLineShow:     false,
     valGridLine:         { color: T.chartGrid, style: "solid" },
     showLegend:          chart.series.length > 1,
-    legendFontColor:     T.body,
+    legendColor:         T.body,
     legendFontSize:      10,
     legendPos:           "b",
     dataLabelColor:      T.heading,
