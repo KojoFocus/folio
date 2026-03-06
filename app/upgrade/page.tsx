@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 const PLANS = [
   {
     key:      "starter" as const,
+    featured: false,
     name:     "Starter",
     price:    19,
     model:    "Haiku",
@@ -37,6 +38,7 @@ const PLANS = [
   },
   {
     key:      "enterprise" as const,
+    featured: false,
     name:     "Enterprise",
     price:    199,
     model:    "Sonnet",
