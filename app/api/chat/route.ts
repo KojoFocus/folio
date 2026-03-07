@@ -316,7 +316,7 @@ For each:
   - **Offers:** [amount or equity, plus non-cash support like mentorship, network]
   - **Requirements:** [key documents/criteria — pitch deck, financials, registration proof, etc.]
   - **Why this fits you:** [specific match to their profile]
-  - **Apply / Contact:** [real URL] | [email or contact if known]
+  - **Apply:** [Apply →](https://full-url-here.com) | [email if known]
   - **Window:** [rolling / deadline: Month Year — verify on site]
 
 **🟡 Prepare Now — Opens Soon**
@@ -337,42 +337,42 @@ For each:
 PROGRAM REFERENCE (use these real URLs and details):
 
 **Africa:**
-- Tony Elumelu Foundation Entrepreneurship Programme — $5,000 non-dilutive + mentorship | Opens annually ~Jan | entrepreneurship.tonyelumelufoundation.org | info@tonyelumelu.com
-- Google for Startups Africa — equity-free support, cloud credits, workspace | Rolling | startup.google.com/intl/en/programs/africa/
-- Seedstars Africa — equity investment for early-stage | Annual World Summit | seedstars.com/programmes/seedstars-world
-- Mastercard Foundation — grants for youth/SMEs in Africa | Various programs | mastercardfdtn.org
-- She Leads Africa — accelerator for women-led African businesses | Annual | sheleadsafrica.org
-- VC4A — network + investment connections | Rolling | vc4a.com
-- Founders Factory Africa — equity accelerator | Rolling | foundersfactory.com/africa
-- GSMA Innovation Fund — mobile/tech for emerging markets | Annual rounds | gsma.com/mobile-for-development/innovation-fund
-- AfDB Affirmative Finance Action for Women in Africa (AFAWA) | afdb.org/en/topics-and-sectors/initiatives-partnerships/afawa
+- Tony Elumelu Foundation — $5,000 non-dilutive + mentorship | Opens annually ~Jan | [Apply →](https://entrepreneurship.tonyelumelufoundation.org)
+- Google for Startups Africa — equity-free, cloud credits | Rolling | [Apply →](https://startup.google.com/intl/en/programs/africa/)
+- Seedstars Africa — equity investment, early-stage | Annual Summit | [Apply →](https://seedstars.com/programmes/seedstars-world)
+- Mastercard Foundation — grants for youth/SMEs | Various programs | [Apply →](https://mastercardfdn.org)
+- She Leads Africa — accelerator for women-led businesses | Annual | [Apply →](https://sheleadsafrica.org)
+- VC4A — network + investment connections | Rolling | [Apply →](https://vc4a.com)
+- Founders Factory Africa — equity accelerator | Rolling | [Apply →](https://foundersfactory.com/africa)
+- GSMA Innovation Fund — mobile/tech for emerging markets | Annual | [Apply →](https://gsma.com/mobile-for-development/innovation-fund)
+- AfDB AFAWA (women in Africa) | [Apply →](https://afdb.org/en/topics-and-sectors/initiatives-partnerships/afawa)
 
 **LATAM:**
-- IDB Lab (Inter-American Development Bank) — grants and equity, early-stage | idblab.iadb.org
-- Endeavor — high-impact entrepreneur network + investment | endeavor.org | Annual selection
-- Village Capital — cohort-based programs, peer investment | vilcap.com | Sector-specific rounds
-- CORFO (Chile) — government grants + loans | corfo.cl | Rolling and annual
-- SEBRAE (Brazil) — SME support grants | sebrae.com.br | Rolling
+- IDB Lab — grants and equity, early-stage | [Apply →](https://idblab.iadb.org)
+- Endeavor — high-impact entrepreneur network | Annual selection | [Apply →](https://endeavor.org)
+- Village Capital — cohort programs, peer investment | Sector rounds | [Apply →](https://vilcap.com)
+- CORFO (Chile) — government grants + loans | Rolling/annual | [Apply →](https://corfo.cl)
+- SEBRAE (Brazil) — SME support grants | Rolling | [Apply →](https://sebrae.com.br)
 
 **Southeast Asia:**
-- Mercy Corps Ventures — seed investment, emerging markets | mercycorpsventures.org
-- IFC SME Finance — debt + equity | ifc.org | Rolling
-- Temasek Trust — social enterprise support | temasektrust.org.sg
+- Mercy Corps Ventures — seed investment | [Apply →](https://mercycorpsventures.org)
+- IFC SME Finance — debt + equity | Rolling | [Apply →](https://ifc.org)
+- Temasek Trust — social enterprise support | [Apply →](https://temasektrust.org.sg)
 
 **Global / Any Region:**
-- Y Combinator — equity accelerator ($500K for 7%) | ycombinator.com | Applies twice yearly (Jan + Jun deadlines)
-- Techstars — equity accelerator | techstars.com | City-specific, rolling
-- Seedcamp — pre-seed/seed VC | seedcamp.com | Rolling
-- AWS Activate — cloud credits up to $100K, no equity | aws.amazon.com/activate | Rolling
-- Microsoft for Startups — Azure credits + GTM support | microsoft.com/en-us/startups | Rolling
-- Google for Startups (global) — equity-free, cloud + support | startup.google.com | Rolling
-- MIT Solve — global challenges, grants + network | solve.mit.edu | Annual (Jan deadline typical)
-- Cartier Women's Initiative — $100K grant, women-led | cartierwomensinitiative.com | Annual (Sep deadline typical)
-- Unreasonable Group — accelerator for impact ventures | unreasonablegroup.com | Annual
-- UN SDG Innovation Fund | sdgif.fund | Rolling
-- Ashoka — fellowship for social entrepreneurs | ashoka.org/en-us/apply | Rolling
+- Y Combinator — $500K for 7% equity | Jan + Jun deadlines | [Apply →](https://ycombinator.com/apply)
+- Techstars — equity accelerator | City-specific, rolling | [Apply →](https://techstars.com)
+- Seedcamp — pre-seed/seed VC | Rolling | [Apply →](https://seedcamp.com)
+- AWS Activate — cloud credits up to $100K, no equity | Rolling | [Apply →](https://aws.amazon.com/activate)
+- Microsoft for Startups — Azure credits + GTM support | Rolling | [Apply →](https://microsoft.com/en-us/startups)
+- Google for Startups — equity-free, cloud + support | Rolling | [Apply →](https://startup.google.com)
+- MIT Solve — grants + global network | Annual (Jan deadline) | [Apply →](https://solve.mit.edu)
+- Cartier Women's Initiative — $100K grant, women-led | Annual (Sep deadline) | [Apply →](https://cartierwomensinitiative.com)
+- Unreasonable Group — accelerator for impact ventures | Annual | [Apply →](https://unreasonablegroup.com)
+- UN SDG Innovation Fund | Rolling | [Apply →](https://sdgif.fund)
+- Ashoka — fellowship for social entrepreneurs | Rolling | [Apply →](https://ashoka.org/en-us/apply)
 
-Always include the real URL. If you're unsure whether a specific deadline is currently open, say "verify current window at [URL]" — never fabricate a deadline. Flag programs as rolling (apply anytime) vs. annual (one window per year) vs. unknown.`,
+IMPORTANT: Always format every URL as a markdown link: [Apply →](https://full-url.com). Never output bare URLs. If you're unsure whether a deadline is open, say "verify current window" but still include the markdown link. Flag programs as rolling vs. annual vs. unknown.`,
 
   review: BOUNDARY(
     "Deck Review",

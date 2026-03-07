@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 const SECTIONS = [
   {
     label: "Create",
+    desc: "Build your pitch deck, financial model, or get your deck reviewed",
     tools: [
       { href: "/build",     icon: Presentation,     title: "Build Deck",      desc: "Generate an investor-grade pitch deck from your idea." },
       { href: "/review",    icon: Search,           title: "Review Deck",     desc: "VC-style feedback + a revised, downloadable deck." },
@@ -21,6 +22,7 @@ const SECTIONS = [
   },
   {
     label: "Strategy",
+    desc: "Marketing plans, business strategy, and growth playbooks",
     tools: [
       { href: "/marketing", icon: Megaphone,        title: "Marketing",       desc: "90-day plan with channels, messaging, and success metrics." },
       { href: "/strategy",  icon: Compass,          title: "Strategy",        desc: "Situation assessment + the 2–3 moves that matter most." },
@@ -29,6 +31,7 @@ const SECTIONS = [
   },
   {
     label: "Raise",
+    desc: "Get investor-ready and find grants, accelerators, and funding",
     tools: [
       { href: "/investor",  icon: Star,             title: "Investor Ready",  desc: "Readiness score across 6 dimensions + 30-day prep checklist." },
       { href: "/funding",   icon: CircleDollarSign, title: "Funding Finder",  desc: "Grants, accelerators, and investors matched to your stage and location — with direct links to apply." },
@@ -41,18 +44,21 @@ export function ToolSections() {
 
   return (
     <div className="space-y-px">
-      {SECTIONS.map(({ label, tools }) => {
+      {SECTIONS.map(({ label, desc, tools }) => {
         const isOpen = open === label;
         return (
           <div key={label}>
             <button
               onClick={() => setOpen(isOpen ? null : label)}
-              className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-left transition-colors hover:bg-field-900"
+              className="flex w-full items-center justify-between rounded-lg px-4 py-3.5 text-left transition-colors hover:bg-field-900"
             >
-              <span className="text-sm font-medium text-field-300">{label}</span>
+              <div>
+                <p className="text-sm font-medium text-field-200">{label}</p>
+                <p className="mt-0.5 text-xs text-field-600">{desc}</p>
+              </div>
               <ChevronRight
                 className={cn(
-                  "h-4 w-4 text-field-600 transition-transform duration-200",
+                  "ml-4 h-4 w-4 shrink-0 text-field-600 transition-transform duration-200",
                   isOpen && "rotate-90",
                 )}
               />

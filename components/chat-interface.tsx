@@ -93,22 +93,45 @@ interface Props {
   userId?:        string;
 }
 
+function renderParts(line: string) {
+  // Split on **bold**, [text](url) markdown links, and bare https:// URLs
+  return line
+    .split(/(\*\*[^*]+\*\*|\[[^\]]+\]\(https?:\/\/[^)]+\)|https?:\/\/[^\s)]+)/g)
+    .map((token, j) => {
+      if (token.startsWith("**") && token.endsWith("**"))
+        return <strong key={j} className="text-field-100">{token.slice(2, -2)}</strong>;
+      const mdLink = token.match(/^\[([^\]]+)\]\((https?:\/\/[^)]+)\)$/);
+      if (mdLink)
+        return (
+          <a key={j} href={mdLink[2]} target="_blank" rel="noopener noreferrer"
+            className="text-sage-400 underline decoration-sage-700/50 hover:text-sage-300 break-all">
+            {mdLink[1]}
+          </a>
+        );
+      if (/^https?:\/\//.test(token))
+        return (
+          <a key={j} href={token} target="_blank" rel="noopener noreferrer"
+            className="text-sage-400 underline decoration-sage-700/50 hover:text-sage-300 break-all">
+            {token}
+          </a>
+        );
+      return token;
+    });
+}
+
 function renderContent(text: string) {
   return text.split("\n").map((line, i) => {
-    const parts = line.split(/(\*\*[^*]+\*\*)/g).map((part, j) =>
-      part.startsWith("**") && part.endsWith("**")
-        ? <strong key={j} className="text-field-100">{part.slice(2, -2)}</strong>
-        : part
-    );
+    const parts = renderParts(line);
+    const partsWithoutLeadingDash = renderParts(line.replace(/^[-•]\s/, ""));
 
     if (line.startsWith("## ") || line.startsWith("# ")) {
-      return <p key={i} className="mt-4 font-semibold text-field-100">{line.replace(/^#{1,2} /, "")}</p>;
+      return <p key={i} className="mt-4 font-semibold text-field-100">{renderParts(line.replace(/^#{1,2} /, ""))}</p>;
     }
     if (line.startsWith("- ") || line.startsWith("• ")) {
       return (
         <div key={i} className="flex gap-2 text-field-300">
           <span className="mt-[0.45rem] h-1 w-1 shrink-0 rounded-full bg-field-600" />
-          <span>{parts.slice(1)}</span>
+          <span>{partsWithoutLeadingDash}</span>
         </div>
       );
     }
