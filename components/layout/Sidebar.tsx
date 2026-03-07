@@ -16,7 +16,6 @@ import {
   Zap,
   MessageSquare,
   Trash2,
-  BarChart2,
   Rocket,
   CircleDollarSign,
 } from "lucide-react";
@@ -24,16 +23,15 @@ import { cn } from "@/lib/utils";
 import type { Plan } from "@/lib/claude";
 
 const NAV = [
-  { href: "/dashboard",  label: "Dashboard",         icon: LayoutDashboard, group: "main"  },
-  { href: "/build",      label: "Pitch Deck",         icon: Presentation,    group: "tools" },
-  { href: "/review",     label: "Review Deck",        icon: Search,          group: "tools" },
-  { href: "/financial",  label: "Financial Model",    icon: TrendingUp,      group: "tools" },
-  { href: "/model",      label: "Model Playground",   icon: BarChart2,       group: "tools" },
-  { href: "/marketing",  label: "Marketing Plan",     icon: Megaphone,       group: "tools" },
-  { href: "/strategy",   label: "Business Strategy",  icon: Compass,         group: "tools" },
-  { href: "/investor",   label: "Investor Readiness", icon: Star,            group: "tools" },
-  { href: "/growth",     label: "Growth Strategy",    icon: Rocket,              group: "tools" },
-  { href: "/funding",    label: "Funding Finder",     icon: CircleDollarSign,    group: "tools" },
+  { href: "/dashboard",  label: "Dashboard",       icon: LayoutDashboard,  group: "main"     },
+  { href: "/build",      label: "Build Deck",       icon: Presentation,     group: "create"   },
+  { href: "/review",     label: "Review Deck",      icon: Search,           group: "create"   },
+  { href: "/financial",  label: "Financial Model",  icon: TrendingUp,       group: "create"   },
+  { href: "/marketing",  label: "Marketing",        icon: Megaphone,        group: "strategy" },
+  { href: "/strategy",   label: "Strategy",         icon: Compass,          group: "strategy" },
+  { href: "/growth",     label: "Growth",           icon: Rocket,           group: "strategy" },
+  { href: "/investor",   label: "Investor Ready",   icon: Star,             group: "raise"    },
+  { href: "/funding",    label: "Funding Finder",   icon: CircleDollarSign, group: "raise"    },
 ] as const;
 
 const PLAN_LABELS: Record<Plan, string> = {
@@ -109,8 +107,10 @@ export function Sidebar({ plan, usageCount }: Props) {
     }
   }
 
-  const mainLinks = NAV.filter((n) => n.group === "main");
-  const toolLinks = NAV.filter((n) => n.group === "tools");
+  const mainLinks     = NAV.filter((n) => n.group === "main");
+  const createLinks   = NAV.filter((n) => n.group === "create");
+  const strategyLinks = NAV.filter((n) => n.group === "strategy");
+  const raiseLinks    = NAV.filter((n) => n.group === "raise");
 
   return (
     <aside
@@ -133,12 +133,32 @@ export function Sidebar({ plan, usageCount }: Props) {
             active={pathname === href} collapsed={collapsed} />
         ))}
 
+        {/* Create group */}
         {!collapsed
-          ? <p className="px-3 pt-4 pb-1 text-[10px] font-medium uppercase tracking-widest text-field-700">Tools</p>
+          ? <p className="px-3 pt-4 pb-1 text-[10px] font-medium uppercase tracking-widest text-field-700">Create</p>
           : <div className="my-2 h-px bg-field-800 mx-2" />
         }
+        {createLinks.map(({ href, label, icon: Icon }) => (
+          <NavLink key={href} href={href} icon={Icon} label={label}
+            active={pathname.startsWith(href)} collapsed={collapsed} />
+        ))}
 
-        {toolLinks.map(({ href, label, icon: Icon }) => (
+        {/* Strategy group */}
+        {!collapsed
+          ? <p className="px-3 pt-4 pb-1 text-[10px] font-medium uppercase tracking-widest text-field-700">Strategy</p>
+          : <div className="my-2 h-px bg-field-800 mx-2" />
+        }
+        {strategyLinks.map(({ href, label, icon: Icon }) => (
+          <NavLink key={href} href={href} icon={Icon} label={label}
+            active={pathname.startsWith(href)} collapsed={collapsed} />
+        ))}
+
+        {/* Raise group */}
+        {!collapsed
+          ? <p className="px-3 pt-4 pb-1 text-[10px] font-medium uppercase tracking-widest text-field-700">Raise</p>
+          : <div className="my-2 h-px bg-field-800 mx-2" />
+        }
+        {raiseLinks.map(({ href, label, icon: Icon }) => (
           <NavLink key={href} href={href} icon={Icon} label={label}
             active={pathname.startsWith(href)} collapsed={collapsed} />
         ))}
