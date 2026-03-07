@@ -41,6 +41,17 @@ const MODE_LABELS: Record<ChatMode, string> = {
   funding:   "Funding Finder",
 };
 
+const MODE_DESCRIPTIONS: Record<ChatMode, string> = {
+  build:     "Generate a full investor-grade pitch deck from your idea",
+  review:    "Upload your deck (PDF or PPTX) for honest VC-style feedback + a revised version",
+  financial: "Answer a few questions and get a 3-year model with runway and unit economics",
+  marketing: "Get a 90-day marketing plan with channels, messaging, and KPIs",
+  strategy:  "Diagnose your biggest challenge and find the 2–3 moves that matter most",
+  investor:  "Score your readiness across 6 investor criteria + 30-day prep checklist",
+  growth:    "Find your growth bottleneck — acquisition, conversion, or retention — and fix it",
+  funding:   "Get matched to grants, accelerators, and investors — with direct links to apply",
+};
+
 const RELATED_TOOLS: Record<ChatMode, { href: string; label: string; icon: React.ElementType }[]> = {
   build:     [
     { href: "/review",    label: "Review a Deck",       icon: Search       },
@@ -500,20 +511,25 @@ export function ChatInterface({ mode, initialMessage, userId }: Props) {
       >
 
       {/* Header */}
-      <header className="flex items-center gap-3 border-b border-field-800 px-4 py-3.5">
+      <header className="flex items-center gap-3 border-b border-field-800 px-4 py-3">
         <button
           onClick={toggleSidebar}
-          className="text-field-600 hover:text-field-300 transition-colors"
+          className="shrink-0 text-field-600 hover:text-field-300 transition-colors"
           title={sidebarOpen ? "Close sidebar" : "Open sidebar"}
         >
           <PanelLeft className="h-4 w-4" />
         </button>
-        <Link href="/dashboard" className="text-field-600 hover:text-field-300 transition-colors">
+        <Link href="/dashboard" className="shrink-0 text-field-600 hover:text-field-300 transition-colors">
           <ArrowLeft className="h-4 w-4" />
         </Link>
-        <span className="font-serif text-sm font-semibold text-field-300">Folio</span>
-        <span className="text-field-700">/</span>
-        <span className="text-sm text-field-500">{MODE_LABELS[mode]}</span>
+        <div className="min-w-0">
+          <div className="flex items-center gap-2">
+            <span className="font-serif text-sm font-semibold text-field-300">Folio</span>
+            <span className="text-field-700">/</span>
+            <span className="text-sm text-field-500">{MODE_LABELS[mode]}</span>
+          </div>
+          <p className="truncate text-xs text-field-700">{MODE_DESCRIPTIONS[mode]}</p>
+        </div>
       </header>
 
       {/* Messages */}

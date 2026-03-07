@@ -11,7 +11,6 @@ const PLANS = [
     featured: false,
     name:     "Starter",
     price:    19,
-    model:    "Haiku",
     tagline:  "Everything you need to get investor-ready.",
     features: [
       "Unlimited deck reviews",
@@ -25,12 +24,11 @@ const PLANS = [
     key:      "pro" as const,
     name:     "Pro",
     price:    49,
-    model:    "Sonnet",
-    tagline:  "Deeper analysis with our most capable model.",
+    tagline:  "Sharper analysis, faster responses, more depth.",
     featured: true,
     features: [
       "Everything in Starter",
-      "Powered by Claude Sonnet",
+      "More thorough, detailed analysis",
       "Priority response speed",
       "Excel financial export",
       "Early access to new features",
@@ -41,7 +39,6 @@ const PLANS = [
     featured: false,
     name:     "Enterprise",
     price:    199,
-    model:    "Sonnet",
     tagline:  "For teams and advisors managing multiple decks.",
     features: [
       "Everything in Pro",

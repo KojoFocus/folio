@@ -3,7 +3,7 @@ import { authOptions } from "@/lib/auth";
 import { ChatInterface } from "@/components/chat-interface";
 
 const INITIAL =
-  "Hey! Numbers don't have to be scary — I promise. I'm going to help you build a simple financial model that shows where your business actually stands and where it's heading. We'll go through it together, one thing at a time, in plain language. So — tell me about your business. What do you do, and how's it going so far?";
+  "Let's build your financial model — no spreadsheets, no jargon. I'll ask you a few plain-English questions about your business, then generate a 3-year projection with revenue, costs, runway, break-even, and unit economics — downloadable as Excel.\n\nTo start: what does your business do, and are you pre-revenue or already generating income?";
 
 export default async function FinancialPage() {
   const session = await getServerSession(authOptions);
