@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
 
-export default function LoginPage() {
+// Inner component uses useSearchParams — must be wrapped in <Suspense>
+function LoginForm() {
   const searchParams = useSearchParams();
   const callbackUrl  = searchParams.get("callbackUrl") ?? "/dashboard";
   const urlError     = searchParams.get("error");
@@ -26,40 +27,48 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-field-950 px-6">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
-        className="w-full max-w-sm space-y-8"
-      >
-        {/* Logo */}
-        <div className="text-center space-y-1">
-          <p className="font-serif text-2xl font-semibold text-field-100">Folio</p>
-          <p className="text-sm text-field-500">Sign in to your account</p>
-        </div>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      className="w-full max-w-sm space-y-8"
+    >
+      {/* Logo */}
+      <div className="text-center space-y-1">
+        <p className="font-serif text-2xl font-semibold text-field-100">Folio</p>
+        <p className="text-sm text-field-500">Sign in to your account</p>
+      </div>
 
-        {/* Error banner */}
-        {error && (
-          <p className="rounded-lg border border-red-900/40 bg-red-950/30 px-4 py-2.5 text-sm text-red-400 text-center">
-            {error}
-          </p>
-        )}
-
-        {/* Google button */}
-        <button
-          onClick={handleGoogle}
-          disabled={loading}
-          className="flex w-full items-center justify-center gap-3 rounded-lg border border-field-700 bg-field-900 px-4 py-3 text-sm font-medium text-field-200 transition-colors hover:border-field-600 hover:bg-field-800 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <GoogleIcon />}
-          Continue with Google
-        </button>
-
-        <p className="text-center text-xs text-field-600">
-          By continuing you agree to our terms of service.
+      {/* Error banner */}
+      {error && (
+        <p className="rounded-lg border border-red-900/40 bg-red-950/30 px-4 py-2.5 text-sm text-red-400 text-center">
+          {error}
         </p>
-      </motion.div>
+      )}
+
+      {/* Google button */}
+      <button
+        onClick={handleGoogle}
+        disabled={loading}
+        className="flex w-full items-center justify-center gap-3 rounded-lg border border-field-700 bg-field-900 px-4 py-3 text-sm font-medium text-field-200 transition-colors hover:border-field-600 hover:bg-field-800 disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <GoogleIcon />}
+        Continue with Google
+      </button>
+
+      <p className="text-center text-xs text-field-600">
+        By continuing you agree to our terms of service.
+      </p>
+    </motion.div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-field-950 px-6">
+      <Suspense fallback={<Loader2 className="h-5 w-5 animate-spin text-field-600" />}>
+        <LoginForm />
+      </Suspense>
     </div>
   );
 }
