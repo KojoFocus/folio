@@ -127,11 +127,22 @@ function renderContent(text: string) {
     if (line.startsWith("## ") || line.startsWith("# ")) {
       return <p key={i} className="mt-4 font-semibold text-field-100">{renderParts(line.replace(/^#{1,2} /, ""))}</p>;
     }
+    // Top-level bullets
     if (line.startsWith("- ") || line.startsWith("• ")) {
       return (
         <div key={i} className="flex gap-2 text-field-300">
           <span className="mt-[0.45rem] h-1 w-1 shrink-0 rounded-full bg-field-600" />
           <span>{partsWithoutLeadingDash}</span>
+        </div>
+      );
+    }
+    // Indented bullets (tab or 2+ spaces + "- " / "* " / "• ")
+    const indented = line.match(/^(?:\t+|\s{2,})[*\-•]\s(.*)$/);
+    if (indented) {
+      return (
+        <div key={i} className="ml-4 flex gap-2 text-field-400">
+          <span className="mt-[0.45rem] h-[3px] w-[3px] shrink-0 rounded-full bg-field-700" />
+          <span>{renderParts(indented[1])}</span>
         </div>
       );
     }

@@ -334,28 +334,33 @@ For each:
 
 ---
 
-PROGRAM REFERENCE (use these real URLs and details):
+VERIFIED PROGRAM LIST — only recommend programs from this list. Never invent, fabricate, or guess programs or URLs. If no program fits, say so honestly rather than making one up.
 
-**Africa:**
+**West Africa / Ghana:**
 - Tony Elumelu Foundation — $5,000 non-dilutive + mentorship | Opens annually ~Jan | [Apply →](https://entrepreneurship.tonyelumelufoundation.org)
-- Google for Startups Africa — equity-free, cloud credits | Rolling | [Apply →](https://startup.google.com/intl/en/programs/africa/)
+- Kosmos Innovation Center (Ghana) — agritech + food systems, equity-free support, Accra-based | Rolling | [Apply →](https://kosmosinnovationcenter.com)
+- Ghana Enterprises Agency (GEA) — SME grants + training, registered Ghanaian businesses | Rolling | [Apply →](https://gea.gov.gh)
+- USAID West Africa Trade & Investment Hub — grants for agribusiness, food processing, export-ready | Rolling | [Apply →](https://watradehub.com)
+- VC4A Ghana — network + investor connections | Rolling | [Apply →](https://vc4a.com)
+- Mastercard Foundation — youth/SME grants, strong presence in Ghana | Various programs | [Apply →](https://mastercardfdn.org)
+- AfDB AFAWA — women-led businesses in Africa | [Apply →](https://afdb.org/en/topics-and-sectors/initiatives-partnerships/afawa)
+
+**Pan-Africa:**
+- Google for Startups Africa — equity-free, cloud credits, workspace | Rolling | [Apply →](https://startup.google.com/intl/en/programs/africa/)
 - Seedstars Africa — equity investment, early-stage | Annual Summit | [Apply →](https://seedstars.com/programmes/seedstars-world)
-- Mastercard Foundation — grants for youth/SMEs | Various programs | [Apply →](https://mastercardfdn.org)
 - She Leads Africa — accelerator for women-led businesses | Annual | [Apply →](https://sheleadsafrica.org)
-- VC4A — network + investment connections | Rolling | [Apply →](https://vc4a.com)
 - Founders Factory Africa — equity accelerator | Rolling | [Apply →](https://foundersfactory.com/africa)
-- GSMA Innovation Fund — mobile/tech for emerging markets | Annual | [Apply →](https://gsma.com/mobile-for-development/innovation-fund)
-- AfDB AFAWA (women in Africa) | [Apply →](https://afdb.org/en/topics-and-sectors/initiatives-partnerships/afawa)
+- GSMA Innovation Fund — mobile/tech/agritech | Annual | [Apply →](https://gsma.com/mobile-for-development/innovation-fund)
+- Village Capital — cohort programs, agri + food focus | Sector rounds | [Apply →](https://vilcap.com)
+- Mercy Corps Ventures — seed investment, agribusiness | [Apply →](https://mercycorpsventures.org)
 
 **LATAM:**
 - IDB Lab — grants and equity, early-stage | [Apply →](https://idblab.iadb.org)
 - Endeavor — high-impact entrepreneur network | Annual selection | [Apply →](https://endeavor.org)
-- Village Capital — cohort programs, peer investment | Sector rounds | [Apply →](https://vilcap.com)
-- CORFO (Chile) — government grants + loans | Rolling/annual | [Apply →](https://corfo.cl)
-- SEBRAE (Brazil) — SME support grants | Rolling | [Apply →](https://sebrae.com.br)
+- CORFO (Chile) — government grants + loans | [Apply →](https://corfo.cl)
+- SEBRAE (Brazil) — SME support grants | [Apply →](https://sebrae.com.br)
 
 **Southeast Asia:**
-- Mercy Corps Ventures — seed investment | [Apply →](https://mercycorpsventures.org)
 - IFC SME Finance — debt + equity | Rolling | [Apply →](https://ifc.org)
 - Temasek Trust — social enterprise support | [Apply →](https://temasektrust.org.sg)
 
@@ -368,11 +373,14 @@ PROGRAM REFERENCE (use these real URLs and details):
 - Google for Startups — equity-free, cloud + support | Rolling | [Apply →](https://startup.google.com)
 - MIT Solve — grants + global network | Annual (Jan deadline) | [Apply →](https://solve.mit.edu)
 - Cartier Women's Initiative — $100K grant, women-led | Annual (Sep deadline) | [Apply →](https://cartierwomensinitiative.com)
-- Unreasonable Group — accelerator for impact ventures | Annual | [Apply →](https://unreasonablegroup.com)
-- UN SDG Innovation Fund | Rolling | [Apply →](https://sdgif.fund)
+- Unreasonable Group — impact ventures accelerator | Annual | [Apply →](https://unreasonablegroup.com)
 - Ashoka — fellowship for social entrepreneurs | Rolling | [Apply →](https://ashoka.org/en-us/apply)
 
-IMPORTANT: Always format every URL as a markdown link: [Apply →](https://full-url.com). Never output bare URLs. If you're unsure whether a deadline is open, say "verify current window" but still include the markdown link. Flag programs as rolling vs. annual vs. unknown.`,
+CRITICAL RULES:
+1. Only recommend programs from the list above. Never invent program names or URLs.
+2. Format every link as [Apply →](https://exact-url-from-list). Never output bare URLs.
+3. If a founder is in a country with no programs on this list, recommend the closest regional fit and say so honestly.
+4. Flag each as rolling (apply anytime) or annual (one window per year).`,
 
   review: BOUNDARY(
     "Deck Review",
