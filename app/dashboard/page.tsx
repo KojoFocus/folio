@@ -3,9 +3,10 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { authOptions } from "@/lib/auth";
 import { UpgradeBanner } from "@/components/UpgradeBanner";
+import { ToolSections } from "@/components/ToolSections";
 import {
   Presentation, Search, TrendingUp, Megaphone, Compass, Star,
-  ArrowRight, LogOut, Rocket, CircleDollarSign,
+  LogOut, Rocket, CircleDollarSign,
 } from "lucide-react";
 
 const PLAN_LABELS: Record<string, string> = {
@@ -90,30 +91,7 @@ export default async function DashboardPage({
             <p className="mt-1 text-sm text-field-500">What would you like to work on today?</p>
           </div>
 
-          <div className="space-y-8">
-            {SECTIONS.map(({ label, tools }) => (
-              <div key={label}>
-                <p className="mb-3 text-[10px] font-medium uppercase tracking-widest text-field-600">{label}</p>
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {tools.map(({ href, icon: Icon, title, desc }) => (
-                    <Link key={href} href={href}
-                      className="group flex flex-col gap-3 rounded-xl border border-field-800 bg-field-900/50 p-5 transition-all hover:border-field-700 hover:bg-field-900">
-                      <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-field-700 bg-field-800">
-                        <Icon className="h-4 w-4 text-sage-400" />
-                      </div>
-                      <div className="flex-1">
-                        <p className="font-medium text-field-200 transition-colors group-hover:text-field-100">{title}</p>
-                        <p className="mt-1 text-xs leading-relaxed text-field-600">{desc}</p>
-                      </div>
-                      <span className="flex items-center gap-1 text-xs font-medium text-sage-500 transition-colors group-hover:text-sage-400">
-                        Open <ArrowRight className="h-3 w-3" />
-                      </span>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+          <ToolSections sections={SECTIONS} />
         </div>
       </main>
     </div>
