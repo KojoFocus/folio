@@ -28,6 +28,7 @@ interface Props {
   streaming: boolean;
   onSend: (text: string, attachments: Attachment[]) => void;
   onStop: () => void;
+  onFocus?: () => void;
 }
 
 function readAsDataUrl(file: File): Promise<string> {
@@ -39,7 +40,7 @@ function readAsDataUrl(file: File): Promise<string> {
   });
 }
 
-export function ChatInput({ streaming, onSend, onStop }: Props) {
+export function ChatInput({ streaming, onSend, onStop, onFocus }: Props) {
   const { toast } = useToast();
 
   const [input,       setInput]       = useState("");
@@ -247,6 +248,7 @@ export function ChatInput({ streaming, onSend, onStop }: Props) {
             name="message"
             value={input}
             onChange={(e) => { setInput(e.target.value); resize(); }}
+            onFocus={onFocus}
             onKeyDown={handleKeyDown}
             placeholder={
               streaming  ? "Thinking…" :

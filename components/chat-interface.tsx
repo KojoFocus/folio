@@ -494,7 +494,10 @@ export function ChatInterface({ mode, initialMessage, userId }: Props) {
       </aside>
 
       {/* ── Main chat area ───────────────────────────────────────────────── */}
-      <div className="flex flex-1 flex-col min-w-0">
+      <div
+        className="flex flex-1 flex-col min-w-0"
+        onClick={() => { if (sidebarOpen) setSidebarOpen(false); }}
+      >
 
       {/* Header */}
       <header className="flex items-center gap-3 border-b border-field-800 px-4 py-3.5">
@@ -633,7 +636,12 @@ export function ChatInterface({ mode, initialMessage, userId }: Props) {
       </div>
 
       {/* Input */}
-      <ChatInput streaming={streaming} onSend={send} onStop={stop} />
+      <ChatInput
+        streaming={streaming}
+        onSend={send}
+        onStop={stop}
+        onFocus={() => setSidebarOpen(false)}
+      />
       </div>{/* end main column */}
     </div>
   );
