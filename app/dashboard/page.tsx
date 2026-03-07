@@ -4,40 +4,11 @@ import Link from "next/link";
 import { authOptions } from "@/lib/auth";
 import { UpgradeBanner } from "@/components/UpgradeBanner";
 import { ToolSections } from "@/components/ToolSections";
-import {
-  Presentation, Search, TrendingUp, Megaphone, Compass, Star,
-  LogOut, Rocket, CircleDollarSign,
-} from "lucide-react";
+import { LogOut } from "lucide-react";
 
 const PLAN_LABELS: Record<string, string> = {
   free: "Free", starter: "Starter", pro: "Pro", enterprise: "Enterprise",
 };
-
-const SECTIONS = [
-  {
-    label: "Create",
-    tools: [
-      { href: "/build",     icon: Presentation,     title: "Build Deck",      desc: "Generate an investor-grade pitch deck from your idea." },
-      { href: "/review",    icon: Search,           title: "Review Deck",     desc: "VC-style feedback + a revised, downloadable deck." },
-      { href: "/financial", icon: TrendingUp,       title: "Financial Model", desc: "3-year projections in plain English. Download as Excel." },
-    ],
-  },
-  {
-    label: "Strategy",
-    tools: [
-      { href: "/marketing", icon: Megaphone,        title: "Marketing",       desc: "90-day plan with channels, messaging, and success metrics." },
-      { href: "/strategy",  icon: Compass,          title: "Strategy",        desc: "Situation assessment + the 2–3 moves that matter most." },
-      { href: "/growth",    icon: Rocket,           title: "Growth",          desc: "Find the levers that move revenue — acquisition, retention, scaling." },
-    ],
-  },
-  {
-    label: "Raise",
-    tools: [
-      { href: "/investor",  icon: Star,             title: "Investor Ready",  desc: "Readiness score across 6 dimensions + 30-day prep checklist." },
-      { href: "/funding",   icon: CircleDollarSign, title: "Funding Finder",  desc: "Grants, accelerators, and investors matched to your stage and location — with direct links to apply." },
-    ],
-  },
-];
 
 export default async function DashboardPage({
   searchParams,
@@ -91,7 +62,7 @@ export default async function DashboardPage({
             <p className="mt-1 text-sm text-field-500">What would you like to work on today?</p>
           </div>
 
-          <ToolSections sections={SECTIONS} />
+          <ToolSections />
         </div>
       </main>
     </div>

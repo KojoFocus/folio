@@ -2,27 +2,46 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ChevronRight, ArrowRight } from "lucide-react";
+import {
+  ChevronRight, ArrowRight,
+  Presentation, Search, TrendingUp,
+  Megaphone, Compass, Rocket,
+  Star, CircleDollarSign,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 
-interface Tool {
-  href: string;
-  icon: React.ElementType;
-  title: string;
-  desc: string;
-}
+const SECTIONS = [
+  {
+    label: "Create",
+    tools: [
+      { href: "/build",     icon: Presentation,     title: "Build Deck",      desc: "Generate an investor-grade pitch deck from your idea." },
+      { href: "/review",    icon: Search,           title: "Review Deck",     desc: "VC-style feedback + a revised, downloadable deck." },
+      { href: "/financial", icon: TrendingUp,       title: "Financial Model", desc: "3-year projections in plain English. Download as Excel." },
+    ],
+  },
+  {
+    label: "Strategy",
+    tools: [
+      { href: "/marketing", icon: Megaphone,        title: "Marketing",       desc: "90-day plan with channels, messaging, and success metrics." },
+      { href: "/strategy",  icon: Compass,          title: "Strategy",        desc: "Situation assessment + the 2–3 moves that matter most." },
+      { href: "/growth",    icon: Rocket,           title: "Growth",          desc: "Find the levers that move revenue — acquisition, retention, scaling." },
+    ],
+  },
+  {
+    label: "Raise",
+    tools: [
+      { href: "/investor",  icon: Star,             title: "Investor Ready",  desc: "Readiness score across 6 dimensions + 30-day prep checklist." },
+      { href: "/funding",   icon: CircleDollarSign, title: "Funding Finder",  desc: "Grants, accelerators, and investors matched to your stage and location — with direct links to apply." },
+    ],
+  },
+];
 
-interface Section {
-  label: string;
-  tools: Tool[];
-}
-
-export function ToolSections({ sections }: { sections: Section[] }) {
+export function ToolSections() {
   const [open, setOpen] = useState<string | null>(null);
 
   return (
     <div className="space-y-px">
-      {sections.map(({ label, tools }) => {
+      {SECTIONS.map(({ label, tools }) => {
         const isOpen = open === label;
         return (
           <div key={label}>
